@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Blog</title>
+        <style>
+            body{
+                background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/220px-Starsinthesky.jpg");
+                color:white;
+                font-family:cursive;
+                font-weight:bold;
+                text-shadow: 3px 2px green;
+                font-style:normal;
+                font-size:20px;
+            }
+            h1{
+                text-align:center;
+                background-color:black;
+            }
+            h3{
+                background-color:black;
+            }
+            .post{
+                border:2px solid;
+                padding:4px;
+                background-color:black;
+            }
+            @keyframes example {
+              0%   {background-color:red;}
+              25%  {background-color:yellow;}
+              50%  {background-color:blue;}
+              75%  {background-color:green;}
+              100% {background-color:red;}
+            }
+     
+            a {
+              width: 100px;
+              height: 100px;
+              position: relative;
+              background-color: red;
+              animation-name: example;
+              animation-duration: 4s;
+              animation-iteration-count:infinite;             
+              text-shadow:none;
+              color:rgb(38, 237, 101);
+            }
+            
+            p{
+                font-family:cursive;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <h1>My Space</h1>
+
+        <h3>Contents</h3>
+        <ul>
+            <li><a href="#first-post">First post!</a></li>
+            <li><a href="#second-post">Second Post</a></li>
+        </ul>
+        <div class="post">
+        <h2 id="first-post">First post</h2>
+        <h6>2:17 PM 10/30/2019</h6>
+        
+        <p>I started by wanting to code, after that I learned python, found this and started learning. It was really interseting to see all the stuff you can do. </p>
+        </div>
+        <br>
+        <div class="post">
+            <h2 id="second-post">Second Post</h2>
+            <h6>3:30 PM 10/30/2019</h6>
+            <p>I miss winston. It's been months since I last coded his accepting face
+                #WeNeedWinston
+            </p>
+            <img src="https://www.kasandbox.org/programming-images/creatures/Winston.png" alt="winston">
+        </div>
+    </body>
+</html>
