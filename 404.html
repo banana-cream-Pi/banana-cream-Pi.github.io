@@ -2,50 +2,80 @@
   <html>
     <head>
       <style>
-        body{
-                    background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/220px-Starsinthesky.jpg");
-                    color:white;
-                    font-family:cursive;
-                    font-weight:bold;
-                    text-shadow: 3px 2px green;
-                    font-style:normal;
-                    font-size:20px;
-                }
-                h1{
-                    text-align:center;
-                    background-color:black;
-                }
-                h3{
-                    background-color:black;
-                }
-                .post{
-                    border:2px solid;
-                    padding:4px;
-                    background-color:black;
-                }
-                @keyframes example {
-                  0%   {background-color:red;}
-                  25%  {background-color:yellow;}
-                  50%  {background-color:blue;}
-                  75%  {background-color:green;}
-                  100% {background-color:red;}
-                }
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
 
-                a {
-                  width: 100px;
-                  height: 100px;
-                  position: relative;
-                  background-color: red;
-                  animation-name: example;
-                  animation-duration: 4s;
-                  animation-iteration-count:infinite;             
-                  text-shadow:none;
-                  color:rgb(38, 237, 101);
-                }
+body{ 
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: #131313;
+  color: #fff;
+  font-size: 96px;
+  font-family: 'Fira Mono', monospace;
+  letter-spacing: -7px;
+}
 
-                p{
-                    font-family:cursive;
-                }
+div{
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+div:before,
+div:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+div:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+div:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
           </style>
         </head>
     <body>
