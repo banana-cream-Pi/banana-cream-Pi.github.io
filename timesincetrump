@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days since the fall</title>
+    <script>
+        var today = new Date();
+        var date_to_reply = new Date('2021-01-20');
+        var timeinmilisec = date_to_reply.getTime() - today.getTime();
+        let daysSinceTrump = Math.abs(Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24)));
+        document.write(`<h2 id="last-known-american-greatness">Days since Orange Man left: ${daysSinceTrump}</h2>`);
+    </script>
+    <style>
+        body {
+            background-image: url("./freedom.jpg");
+
+            background-size: cover;
+        }
+
+        #last-known-american-greatness {
+            color: rgb(255, 145, 0);
+            position: absolute;
+           
+            top: 50%;
+            left: 40%;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
