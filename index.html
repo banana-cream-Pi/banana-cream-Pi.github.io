@@ -1,75 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Project: Blog</title>
-        <style>
-            body{
-                background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/220px-Starsinthesky.jpg");
-                color:white;
-                font-family:cursive;
-                font-weight:bold;
-                text-shadow: 3px 2px green;
-                font-style:normal;
-                font-size:20px;
-            }
-            .black{
-                text-align:center;
-                background-color:black;
-            }
-            h3{
-                background-color:black;
-            }
-            .post{
-                border:2px solid;
-                padding:4px;
-                background-color:black;
-            }
-            @keyframes example {
-              0%   {background-color:red;}
-              25%  {background-color:yellow;}
-              50%  {background-color:blue;}
-              75%  {background-color:green;}
-              100% {background-color:red;}
-            }
-     
-            a {
-              width: 100px;
-              height: 100px;
-              position: relative;
-              background-color: red;
-              animation-name: example;
-              animation-duration: 4s;
-              animation-iteration-count:infinite;             
-              text-shadow:none;
-              color:rgb(38, 237, 101);
-            }
-            
-            p{
-                font-family:cursive;
-            }
-            
-            #epical{
-                text-align: center;
-            }
-            
-        </style>
-    </head>
-    <body>
-        
-        <h1 class=black>My Space</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana_cream_pi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
-        <h3 class=black>Contents</h3>
-        <ul>
-            <li><a href="links.html">Links to everything on the site</a></li>
-            
-        </ul>
-        <h1 id=epical>my EPIC website</h1>
-        <img src=https://cdn.vox-cdn.com/uploads/chorus_asset/file/8688491/hiE5vMs.gif>
-        <img src=https://media1.giphy.com/media/3o6fJ3xFENBRxVFvUc/source.gif>
-        <a href=https://www.microsoft.com/en-us/edge><img src=https://dynablox.neocities.org/200.gif></a>
-        <img src=https://media4.giphy.com/media/nnHjsSHrafLbi/200w.gif>
-        
+        body{
+        padding: 40px;
+        background-color: #000000;  
+        }
 
-    </body>
+        .typewriter {
+        border-right: solid 3px rgba(0,255,0,.75);
+        white-space: nowrap;
+        overflow: hidden;    
+        font-family: 'Source Code Pro', monospace;  
+        font-size: 28px;
+        color: rgb(0, 255, 0);
+        }
+
+        /* Animation */
+        .typewriter {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            animation: animated-text 700ms steps(29,end) 1s 1 normal both,
+                        animated-cursor 600ms steps(29,end) infinite;
+        }
+
+        /* text animation */
+
+        @keyframes animated-text{
+        from{width: 0;}
+        to{width: 120px;}
+        }
+
+        /* cursor animations */
+
+        @keyframes animated-cursor{
+        from{border-right-color: rgba(0,255,0,.75);}
+        to{border-right-color: transparent;}
+        }
+        #hud{
+            float:right;
+        }
+        #main{
+            margin: auto;
+            width: 50%;
+            border: 3px solid green;
+            padding: 10px;
+        }
+        a{color:rgb(0, 255, 0)}
+    </style>
+</head>
+<body>
+    
+    
+    
+    
+    <div id=hud>
+        <img  width=150px id=hud src='https://cdn.dribbble.com/users/31818/screenshots/2035234/dribbb.gif'><br>
+        <img  width=150px src=https://i.pinimg.com/originals/f2/d9/c3/f2d9c3dbdc12351f8d32585b8cf5152b.gif>
+    </div>
+    <img style='float:left' width=150px src=https://i.pinimg.com/originals/c4/b4/c9/c4b4c9f2d9eac771ed24e1f381abc402.gif>
+    <br><img style='float:left' width=150px src=https://i.pinimg.com/originals/62/aa/d0/62aad0c67db5844bd816a01aabd15a89.gif>
+    <div id=main>
+        <h1 class=typewriter>Welcome</h1>
+        <a href=https://banana-cream-pi.github.io/AoPSAdminControlBoard.html>Admin Control Board</a><br>
+        <a href=https://banana-cream-pi.github.io/Aopsusers.html>AoPS Users</a><br>
+        
+        <a href=https://banana-cream-pi.github.io/hacked.html>h4x0r</a><br>
+        <a href=https://banana-cream-pi.github.io/index.html>blog</a><br>
+        <a href=https://banana-cream-pi.github.io/legitnoscamfree.html>Runescape Scam</a><br>
+        <a href=https://banana-cream-pi.github.io/new-york.html>New York Travel</a><br>
+        <a href=https://banana-cream-pi.github.io/puppyvote.html>Puppy Vote</a><br>
+        <a href=https://banana-cream-pi.github.io/recipes.html>Recipes</a><br>
+        <a href=https://banana-cream-pi.github.io/redir.html>Redirect test</a><br>
+        <a href=https://banana-cream-pi.github.io/userswithspaces.html>Users with spaces in their user name</a><br>
+        <a href=https://banana-cream-pi.github.io/yourlogicalfallacy.html>Your logical fallacy clone</a><br>
+        <a href=https://banana-cream-Pi.github.io/timesincetrump.html>Days since Trump left</a>
+
+    </div>
+</body>
 </html>
