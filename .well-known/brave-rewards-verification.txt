@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: banana-cream-pi.github.io
+Token: 43f6455c29e0e9e3c8f30afc9fc2b9929bcee31ca9608eb23ec2c3fa97373f61
