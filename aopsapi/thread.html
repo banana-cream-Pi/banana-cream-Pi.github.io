@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>user</title>
+        <style>.sidenav {
+                height: 100%; /* Full-height: remove this if you want "auto" height */
+                width: 160px; /* Set the width of the sidebar */
+                position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+                z-index: 1; /* Stay on top */
+                top: 0; /* Stay at the top */
+                left: 0;
+                background-image: url('https://www.zingerbug.com/Backgrounds/background_images/gray_screen_seamless.jpg'); /* Black */
+                overflow-x: hidden; /* Disable horizontal scroll */
+                padding-top: 20px;
+              }
+              
+              /* The navigation menu links */
+              .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              
+              /* When you mouse over the navigation links, change their color */
+              .sidenav a:hover {
+                color: #f1f1f1;
+              }
+              .side-title{
+                        font-family: Arial;
+                        margin-left: 4%;
+                }
+              /* Style page content */
+              .main {
+                margin-left: 160px; /* Same as the width of the sidebar */
+                padding: 0px 10px;
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              
+              /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+              @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 15px;}
+                .sidenav a {font-size: 18px;}
+              }
+              .col{
+                      left:5px;
+                      margin:4%
+              }
+              .method-list{float:left;}
+              .list-item{
+                list-style-type: none;
+                color:#818181;
+                text-decoration: none;
+              }
+              .list-item a:link {
+                text-decoration: none;
+                color:#818181;
+                }
+                .list-itema:visited {
+                text-decoration: none;
+                color:#818181;
+                }
+                .list-item a:hover {
+                text-decoration: none;
+                color:#5f5c5c;
+                }
+                .list-item a:active {
+                text-decoration: none;
+                color:#818181;
+                }
+                .param{
+                        color:#818181;  
+                        
+                }
+                .methods{
+                        top:500px;
+                }
+                .code{
+                        font-family: monospace;
+                        color:rgb(132, 223, 211);
+                        border-radius: 25px;
+                        background: #252524;
+                        padding: 20px;
+                        width: auto;
+                        height: auto;
+                }
+                .method{list-style-type: none;}
+                .outer {
+                        width: 40%;
+                        
+                        
+                }
+
+                .inner {
+                        margin-left: 50px;
+                        
+                }
+        </style>
+</head>
+<body>
+        <div class=sidenav>
+                <div class=side-title><h3>Classes</h3></div>
+                <div class=side-links>
+                        <ul>
+                        <li><a href=/thread.html>thread</a></li>
+                        <li><a href=/user.html>user</a></li></ul>
+                </div>
+        </div>
+        <div class=main><h1>User</h1>
+        <p>User class, has information on a user</p>
+        <div class=class-overview>
+                <div class=col>
+                        <div class=title>Properties</div>
+                                <ul>
+                                        <li class=list-item>none</li>
+                                </ul>
+                        
+                </div>
+                <div class=col>
+                        <div class=title>Methods</div>
+                                <ul id=method-list>
+                                        <li class=list-item><a href=#author>author</a></li>
+                                        <li class=list-item><a href=#postNum>postNum</a></li>
+                                        <li class=list-item><a href=#title>title</a></li>
+                                        
+                                        
+
+                                </ul>
+                        
+                </div>
+        </div>
+        <div class="properties">
+                <h2>Properties</h2>
+                <p> Thread class does not have any properties</p>
+        </div>
+        <div class="methods">
+                <h2>Methods</h2>
+                <ul>
+                        <li class="method outer" id="author"><h3>.author(<span class=param>thread ID</span>)</h3>
+                                <div class="inner"><p>Returns username of author of the specified thread. If the thread is invalid it will throw an error. it will also throw an error if it's not the top thread but that's not supposed to happen it's just because aops is weird</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.author('810735h1770184'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">Jomity</p>
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="postNum"><h3>.postNum(<span class=param>thread ID</span>)</h3>
+                                <div class="inner"><p>Returns number of posts in the specified thread. If the thread is invalid it will throw an error. it will also throw an error if it's not the top thread but that's not supposed to happen it's just because aops is weird</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.postNum('810735h1770184'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">21486</p>
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="title"><h3>.title(<span class=param>thread ID</span>)</h3>
+                                <div class="inner"><p>Returns title of the specified thread. If the thread is invalid it will throw an error. it will also throw an error if it's not the top thread but that's not supposed to happen it's just because aops is weird</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.title('810735h1770184'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">ULTIMATE MARATHON</p>
+                                <br></div>
+
+                        </li>
+                        
+                        </li>
+                </ul>
+        </div>
+
+
+</div>
+</body>
+</html>
