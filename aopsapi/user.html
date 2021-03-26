@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>user</title>
+        <style>.sidenav {
+                height: 100%; /* Full-height: remove this if you want "auto" height */
+                width: 160px; /* Set the width of the sidebar */
+                position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+                z-index: 1; /* Stay on top */
+                top: 0; /* Stay at the top */
+                left: 0;
+                background-image: url('https://www.zingerbug.com/Backgrounds/background_images/gray_screen_seamless.jpg'); /* Black */
+                overflow-x: hidden; /* Disable horizontal scroll */
+                padding-top: 20px;
+              }
+              
+              /* The navigation menu links */
+              .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              
+              /* When you mouse over the navigation links, change their color */
+              .sidenav a:hover {
+                color: #f1f1f1;
+              }
+              .side-title{
+                        font-family: Arial;
+                        margin-left: 4%;
+                }
+              /* Style page content */
+              .main {
+                margin-left: 160px; /* Same as the width of the sidebar */
+                padding: 0px 10px;
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              
+              /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+              @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 15px;}
+                .sidenav a {font-size: 18px;}
+              }
+              .col{
+                      left:5px;
+                      margin:4%
+              }
+              .method-list{float:left;}
+              .list-item{
+                list-style-type: none;
+                color:#818181;
+                text-decoration: none;
+              }
+              .list-item a:link {
+                text-decoration: none;
+                color:#818181;
+                }
+                .list-itema:visited {
+                text-decoration: none;
+                color:#818181;
+                }
+                .list-item a:hover {
+                text-decoration: none;
+                color:#5f5c5c;
+                }
+                .list-item a:active {
+                text-decoration: none;
+                color:#818181;
+                }
+                .param{
+                        color:#818181;  
+                        
+                }
+                .methods{
+                        top:500px;
+                }
+                .code{
+                        font-family: monospace;
+                        color:rgb(132, 223, 211);
+                        border-radius: 25px;
+                        background: #252524;
+                        padding: 20px;
+                        width: auto;
+                        height: auto;
+                }
+                .method{list-style-type: none;}
+                .outer {
+                        width: 40%;
+                        
+                        
+                }
+
+                .inner {
+                        margin-left: 50px;
+                        
+                }
+        </style>
+</head>
+<body>
+        <div class=sidenav>
+                <div class=side-title><h3>Classes</h3></div>
+                <div class=side-links>
+                        <ul>
+                        <li><a href=/thread.html>thread</a></li>
+                        <li><a href=/user.html>user</a></li></ul>
+                </div>
+        </div>
+        <div class=main><h1>User</h1>
+        <p>User class, has information on a user</p>
+        <div class=class-overview>
+                <div class=col>
+                        <div class=title>Properties</div>
+                                <ul>
+                                        <li class=list-item>none</li>
+                                </ul>
+                        
+                </div>
+                <div class=col>
+                        <div class=title>Methods</div>
+                                <ul id=method-list>
+                                        <li class=list-item><a href=#avatar>avatar</a></li>
+                                        <li class=list-item><a href=#goals>goals</a></li>
+                                        <li class=list-item><a href=#intrests>intrests</a></li>
+                                        <li class=list-item><a href=#joined>joined</a></li>
+                                        <li class=list-item><a href=#location>location</a></li>
+                                        <li class=list-item><a href=#occupation>occupation</a></li>
+                                        <li class=list-item><a href=#posts>posts</a></li>
+                                        <li class=list-item><a href=#school>school</a></li>
+                                        <li class=list-item><a href=#status>status</a></li>
+                                        <li class=list-item><a href=#userID>userID</a></li>
+                                        <li class=list-item><a href=#username>username</a></li>
+                                        <li class=list-item><a href=#website>website</a></li>
+                                        
+
+                                </ul>
+                        
+                </div>
+        </div>
+        <div class="properties">
+                <h2>Properties</h2>
+                <p> User class does not have any properties</p>
+        </div>
+        <div class="methods">
+                <h2>Methods</h2>
+                <ul>
+                        <li class="method outer" id="avatar"><h3>.avatar(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns avatar url of specified user. If the user is invalid it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.avatar('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">//avatar.artofproblemsolving.com/avatar_438336.jpg?t=1616293663</p>
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="goals"><h3>.goals(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns goals field of specified user. If the user is invalid or the user does not have goals set it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class=code>console.log(await aops.user.goals('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class=code>to be famous</p>
+                                
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="intrests"><h3>.intrests(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns intrests field of specified user. If the user is invalid or the user does not have intrests set it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.intrests('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">math, science, etc</p>
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="joined"><h3>.joined(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the date the specified user joined. If the user is invalid it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.joined('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">October 2, 2018</p>
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="occupation"><h3>.occupation(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the location field of specified user. If the user is invalid or the user does not have occupation set it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.occupation('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">Web Development</p>
+                                <br></div>
+
+                        </li>
+                        <li class="method outer" id="posts"><h3>.posts(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the number posts the specified user has made. If the user is invalid it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.posts('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">1003</p>
+                                <br></div>
+
+                        </li><li class="method outer" id="school"><h3>.school(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the school field of specified user. If the user is invalid or the user does not have school set it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.school('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">Homeschooled</p>
+                                <br></div>
+
+                        </li><li class="method outer" id="status"><h3>.status(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the status field of specified user. If the user is invalid or the user does not have status set it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.status('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">VSCoding</p>
+                                <br></div>
+
+                        </li><li class="method outer" id="userID"><h3>.userID(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the userID of specified user. If the user is invalid it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.userID('banana_cream_PI'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">438336</p>
+                                <br></div>
+
+                        </li><li class="method outer" id="username"><h3>.username(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the username of specified user. If the user is invalid it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.username('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">banana_cream_PI</p>
+                                <br></div>
+
+                        </li><li class="method outer" id="website"><h3>.website(<span class=param>user</span>)</h3>
+                                <div class="inner"><p>Returns the website field of specified user. If the user is invalid or the user does not have website set it will throw an error</p>
+                                <h5>Example:</h5>
+                                <p class="code">console.log(await aops.user.website('438336'));</p>
+                                <h5>Output:</h5>
+                                <p class="code">https://banana-cream-pi.github.io/recipes.html#banana-cream-pie</p>
+                                <br></div>
+
+                        </li>
+                        
+                        
+                        </li>
+                </ul>
+        </div>
+
+
+</div>
+</body>
+</html>
