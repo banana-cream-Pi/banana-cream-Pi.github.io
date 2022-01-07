@@ -1,6 +1,3 @@
-banana-cream-Pi.github.io/404.html
-banana-cream-Pi.github.io/AoPSAdminControlBoard.html
-banana-cream-Pi.github.io/Aopsusers.html
 banana-cream-Pi.github.io/UGF.jpg
 banana-cream-Pi.github.io/about.html
 banana-cream-Pi.github.io/freedom.jpg
