@@ -1,0 +1,52 @@
+<!--no doctype because I'm bad at coding and for whatever reason doctype messes up my crap css-->
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Percentage of the year</title>
+     <style>
+          body {
+               background-image: url("./hourglass.jpg");
+               background-size: cover;
+          }
+
+          #percent {
+               height: 100%;
+               position: relative
+          }
+
+          #percent h2 {
+               margin: 0;
+               border-radius: 15px;
+               background: rgb(150, 150, 150);
+               padding: 10px;
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               margin-right: -50%;
+               transform: translate(-50%, -50%)
+          }
+     </style>
+     <script>
+          setInterval(function timer() {
+               var today = new Date();
+               var date_to_reply = new Date('2022-01-01 00:00:01');
+               var totalms = 31536000000;
+               var timeinmilisec = (date_to_reply.getTime() - today.getTime()) * (-1);
+               var t = (timeinmilisec / 315360000).toFixed(6);
+               console.log(t);
+               document.getElementById("text").innerText = `Percentage of 2022 passed: ${t}%`;
+          }, 1000);
+     </script>
+
+
+</head>
+
+<body>
+     <div id="percent">
+          <h2 id="text">Percentage of 2022 passed:</h2>
+     </div>
+</body>
+
+</html>
