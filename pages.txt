@@ -20,3 +20,4 @@ https://banana-cream-Pi.github.io/altar-serving/
 https://banana-cream-Pi.github.io/aopsapi/
 https://banana-cream-Pi.github.io/contact/
 https://banana-cream-Pi.github.io/tab/tin-whistle-tab.html
+https://banana-cream-Pi.github.io/tab/percent.html
