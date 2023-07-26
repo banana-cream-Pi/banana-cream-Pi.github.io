@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>graduation</title>
+     <style>
+          body {
+               font-family: 'Courier New', Courier, monospace;
+               text-align: center;
+               margin: 50px;
+               background-color: black;
+               color: chartreuse;
+          }
+     </style>
+</head>
+
+<body>
+     <h1>Not quite free</h1>
+     <h3 id="percentage"></h3>
+
+     <script>function updatePercentage() {
+               const june4th2024 = new Date("2024-06-04");
+               const july26th2023 = new Date("2013-09-01");
+               const now = new Date();
+
+               // Calculate the difference between the two dates in milliseconds
+               const difference = june4th2024 - july26th2023;
+               const totalDuration = june4th2024 - now;
+
+               // Calculate the percentage
+               const percentage = (
+                    100 - Math.min(100, (totalDuration / difference) * 100)
+               ).toFixed(8);
+               ("");
+
+               // Display the percentage on the webpage
+               const percentageElement = document.getElementById("percentage");
+               percentageElement.textContent = `${percentage}% of the way through state mandated education`;
+          }
+
+          // Update the percentage every second
+          setInterval(updatePercentage, 1000);
+
+          // Call the function immediately to display the initial percentage
+          updatePercentage();
+</script>
+</body>
+
+</html>
