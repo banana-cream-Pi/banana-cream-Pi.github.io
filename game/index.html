@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Escape</title>
+     <style>
+          #room {
+               background-color: beige;
+               height: 400px;
+               width: 600px;
+               border-style: solid;
+               border-color: black;
+          }
+
+          #box {
+               position: absolute;
+               top: 200px;
+               left: 200px;
+          }
+
+          #weight {
+               position: absolute;
+               left: 200px;
+               top: 150px;
+          }
+
+          #note,
+          #key,
+          #win {
+               visibility: hidden;
+          }
+     </style>
+</head>
+
+<body>
+     <script>
+          var hasKey = false;
+          var hasCode = false;
+          var weightMoved = false;
+          var noteFound = false;
+          function getKey() {
+               document.getElementById("info").textContent = "You Picked up the key";
+
+               hasKey = true;
+          }
+          function door() {
+
+           
+               if (hasKey) {
+                    document.getElementById("info").textContent = "You Escaped!";
+                    document.getElementById("win").style.visibility = "visible"
+                    document.getElementById("room").style.visibility = "hidden"
+
+               } else {
+                    document.getElementById("info").textContent = "The Door is Locked";
+
+               }
+          }
+          function box() {
+               if (weightMoved) {
+                    document.getElementById("info").textContent = "You found a note";
+                    document.getElementById("note").style.visibility = "visible"
+                    noteFound = true;
+               } else {
+                    document.getElementById("info").textContent = "There is something heavy on the box preventing you from opening it";
+               }
+          }
+          function note() {
+               if (noteFound) {
+                    document.getElementById("info").textContent = "You have the code";
+                    hasCode = true;
+               } else { document.getElementById("info").textContent = "You don't have a note"; }
+          }
+          function weight() {
+               document.getElementById("info").textContent = "You moved the weight";
+               document.getElementById("weight").style.transform = "translate(50px, 100px)";
+               weightMoved = true;
+          }
+          function cabinet() {
+               if (hasCode) {
+                    document.getElementById("info").textContent = "There is a key inside";
+                    document.getElementById("key").style.visibility = "visible"
+
+               } else {
+                    document.getElementById("info").textContent = "You need a key code to open the cabinet";
+               }
+          }
+
+
+     </script>
+     <h2>Escape</h2>
+     <h3 id="info"></h3>
+     <div id="room">
+          <img id="door" onClick="door()" src="./img/door.png">
+          <img id="box" onClick="box()" src="./img/box.png">
+          <img id="weight" onClick="weight()" src="./img/weight.png">
+          <img id="cabinet" onClick="cabinet()" src="./img/cabinet.png">
+          <img id="note" onClick="note()" src="./img/note.png">
+          <img id="key" onClick="getKey()" src=" ./img/key.png">
+          <img id="win" src="https://img1.picmix.com/output/pic/normal/7/0/9/9/9919907_17ade.gif">
+     </div>
+</body>
+
+</html>
