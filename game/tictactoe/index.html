@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>table, th, td {
-  border: 1px solid;
-}
-td{
-height:30px;
-width: 30px;
-text-align:center;
-}</style>
+   <head>
+      <style>table, th, td {
+         border: 1px solid;
+         }
+         td{
+         height:30px;
+         width: 30px;
+         text-align:center;
+         }
+      </style>
+   </head>
+   <body>
+      <script>
+        var turn = 'x';
+		var spaces = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
-</head>
-<body>
-<script>
-	var turn = 'x';
-	var spaces=['one','two','three','four','five','six','seven','eight','nine'];
-	
-	function move(space){
-		document.getElementById(space).innerHTML=turn;
-		if(turn ==='x'){
-		turn = 'o';
-		}else{
-			turn='x';
+		function move(space) {
+			document.getElementById(space).innerHTML = turn;
+			if (turn === 'x') {
+				turn = 'o';
+			} else {
+				turn = 'x';
+			}
+			var c = 'x';
+			for (i = 0; i < 3; i++) {
+				if ((document.getElementById("one").innerHTML === c && document.getElementById("two").innerHTML === c && document.getElementById("three").innerHTML === c)) {
+					console.log("hor1");
+					document.getElementById("win").innerHTML = `${c} wins!`;
+				} else if (document.getElementById("four").innerHTML === c && document.getElementById("five").innerHTML === c && document.getElementById("six").innerHTML === c) {
+					console.log("hor2");
+					document.getElementById("win").innerHTML = `${c} wins!`;
+				} else if (document.getElementById("seven").innerHTML === c && document.getElementById("eight").innerHTML === c && document.getElementById("nine").innerHTML === c) {
+					console.log("hor3");
+					document.getElementById("win").innerHTML = `${c} wins!`;
+				} else if (document.getElementById("one").innerHTML === c && document.getElementById("four").innerHTML === c && document.getElementById("seven").innerHTML === c) {
+					console.log("vert1");
+					document.getElementById("win").innerHTML = `${c} wins!`;
+				} else if (document.getElementById("two").innerHTML === c && document.getElementById("five").innerHTML === c && document.getElementById("eight").innerHTML === c) {
+					console.log("vert2");
+					document.getElementById("win").innerHTML = `${c} wins!`;
+				} else if (document.getElementById("three").innerHTML === c && document.getElementById("six").innerHTML === c && document.getElementById("nine").innerHTML === c) {
+					console.log("vert3");
+					document.getElementById("win").innerHTML = `${c} wins!`;
+				}
+				c = 'o';
+			}
 		}
-		var c ='x';
-	for(i=0;i<3;i++){	
-	if((document.getElementById("one").innerHTML===c && document.getElementById("two").innerHTML ===c && document.getElementById("three").innerHTML===c)){
-		console.log("hor1");
-		document.getElementById("win").innerHTML=`${c} wins!`;
-	}
-	else if(document.getElementById("four").innerHTML===c && document.getElementById("five").innerHTML ===c && document.getElementById("six").innerHTML===c){
-	console.log("hor2");
-	document.getElementById("win").innerHTML=`${c} wins!`;
-	}
-	else if(document.getElementById("seven").innerHTML===c && document.getElementById("eight").innerHTML ===c && document.getElementById("nine").innerHTML===c){console.log("hor3");
-	document.getElementById("win").innerHTML=`${c} wins!`;}
-	else if(document.getElementById("one").innerHTML===c && document.getElementById("four").innerHTML ===c && document.getElementById("seven").innerHTML===c){console.log("vert1");document.getElementById("win").innerHTML=`${c} wins!`;}
-	else if(document.getElementById("two").innerHTML===c && document.getElementById("five").innerHTML ===c && document.getElementById("eight").innerHTML===c){console.log("vert2");document.getElementById("win").innerHTML=`${c} wins!`;}
-	else if(document.getElementById("three").innerHTML===c && document.getElementById("six").innerHTML ===c && document.getElementById("nine").innerHTML===c){console.log("vert3");document.getElementById("win").innerHTML=`${c} wins!`;}
-	c='o';
-	}}
-
-</script>
-	<h2>Play!</h2>
-	<h2 id="win"></h2>
-	<table>
-	
-	<tr><td id ="one" onClick="move('one')"> </td><td id="two" onClick="move('two')"> </td><td id="three" onClick="move('three')"> </td></tr>
-	<tr><td id ="four" onClick="move('four')"> </td><td id="five" onClick="move('five')"> </td><td id="six" onClick="move('six')"> </td></tr>
-	<tr><td id ="seven" onClick="move('seven')"> </td><td id="eight" onClick="move('eight')"> </td><td id="nine" onClick="move('nine')"> </td></tr>
-	</table>
-
-</body>
+         
+      </script>
+      <h2>Play!</h2>
+      <h2 id="win"></h2>
+      <table>
+         <tr>
+            <td id ="one" onClick="move('one')"> </td>
+            <td id="two" onClick="move('two')"> </td>
+            <td id="three" onClick="move('three')"> </td>
+         </tr>
+         <tr>
+            <td id ="four" onClick="move('four')"> </td>
+            <td id="five" onClick="move('five')"> </td>
+            <td id="six" onClick="move('six')"> </td>
+         </tr>
+         <tr>
+            <td id ="seven" onClick="move('seven')"> </td>
+            <td id="eight" onClick="move('eight')"> </td>
+            <td id="nine" onClick="move('nine')"> </td>
+         </tr>
+      </table>
+   </body>
 </html>
