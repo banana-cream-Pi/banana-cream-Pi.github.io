@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>table, th, td {
+         border: 1px solid;
+         }
+         td{
+         height:30px;
+         width: 30px;
+         text-align:center;
+         }
+      </style>
+   </head>
+   <body>
+      <script>
+        var turn = 'x';
+		spaces = [['one', 'two', 'three'], ['four', 'five', 'six'], ['seven', 'eight', 'nine']];
+	
+		function move(space) {
+			document.getElementById(space).innerHTML = turn;
+			if (turn === 'x') {
+				turn = 'o';
+			} else {
+				turn = 'x';
+			}
+			var c = 'x';
+			for (i = 0; i <=2 ; i++) {
+				horizontalCheck(i);
+			}
+			
+		}
+		function horizontalCheck(loc){
+			for (i=0; i<=2; i++;){
+				if(document.getElementById(spaces[loc][i]).innerHTML != c){
+					return false;
+				}
+			}
+			return true;
+		}
+		function verticalCheck(loc){
+		for (i=0; i<=2; i++;){
+				if(document.getElementById(spaces[i][loc]).innerHTML != c){
+					return false;
+				}
+			}
+			return true;
+		}
+		function diagonalCheck(loc){
+			for (i=0; i<=2; i++;){
+				if(document.getElementById(spaces[i][loc]).innerHTML != c){
+					return false;
+				}
+			}
+			return true;
+		}
+         
+      </script>
+      <h2>Play!</h2>
+      <h2 id="win"></h2>
+      <table>
+         <tr>
+            <td id ="one" onClick="move('one')"> </td>
+            <td id="two" onClick="move('two')"> </td>
+            <td id="three" onClick="move('three')"> </td>
+         </tr>
+         <tr>
+            <td id ="four" onClick="move('four')"> </td>
+            <td id="five" onClick="move('five')"> </td>
+            <td id="six" onClick="move('six')"> </td>
+         </tr>
+         <tr>
+            <td id ="seven" onClick="move('seven')"> </td>
+            <td id="eight" onClick="move('eight')"> </td>
+            <td id="nine" onClick="move('nine')"> </td>
+         </tr>
+      </table>
+   </body>
+</html>
