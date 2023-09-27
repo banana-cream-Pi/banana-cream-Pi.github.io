@@ -1,0 +1,45 @@
+h2 {
+   color : white;
+   background-color: grey;
+   text-align:center;
+   border-radius:2px;
+}
+body{
+	font-family:OCR A Std, monospace;
+	background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Hubble_ultra_deep_field.jpg/1200px-Hubble_ultra_deep_field.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+td{
+	padding:5px;
+}
+input[type="text"]
+{
+    font-family:OCR A Std, monospace;
+	font-weight: bold;
+}
+button{
+	font-size:18px;
+	margin-left:5px;
+	font-family: monospace
+}
+#form{
+	margin-left:auto;
+	margin-right:auto;
+	border-style: solid;
+	border-radius:10px;
+	padding: 10px;
+	background-color:black;
+	color:white;
+	width:40%;
+	
+}
+#spaceman{
+	float:right;
+	position:fixed;
+	margin-top:300px;
+	margin-left:40px;
+	width:100px;
+	transform: rotate(20deg);
+}
