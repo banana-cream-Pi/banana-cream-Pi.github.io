@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--Michael Griffin-->
+<html>
+
+<head>
+	<link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+
+	<div id="form">
+		<form id="inputForm">
+			<h2>Your Information</h2>
+			<table>
+				<tr>
+					<td><label for="fname">First name:</label></td>
+					<td><input type="text" id="fname" name="fname"></td>
+				</tr>
+				<tr>
+					<td><label for="lname">Last name:</label></td>
+					<td><input type="text" id="lname" name="lname"></td>
+				</tr>
+				<tr>
+					<td><label for="address">Address:</label></td>
+					<td><input type="text" id="address" name="address"></td>
+				</tr>
+				<tr>
+					<td><label for="city">City:</label></td>
+					<td><input type="text" id="city" name="city"></td>
+				</tr>
+				<tr>
+					<td><label for="zip">ZIP:</label></td>
+					<td><input type="text" id="zip" name="zip"></td>
+				</tr>
+				<tr>
+					<td><label for="phone">Phone:</label></td>
+					<td><input type="text" id="phone" name="phone"></td>
+				</tr>
+				<tr>
+					<td>
+						<select name="state" id="state">
+							<option value="AK">AK</option>
+							<option value="AL">AL</option>
+							<option value="AR">AR</option>
+							<option value="AZ">AZ</option>
+							<option value="CA">CA</option>
+							<option value="CO">CO</option>
+							<option value="CT">CT</option>
+							<option value="DC">DC</option>
+							<option value="DE">DE</option>
+							<option value="FL">FL</option>
+							<option value="GA">GA</option>
+							<option value="HI">HI</option>
+							<option value="IA">IA</option>
+							<option value="ID">ID</option>
+							<option value="IL">IL</option>
+							<option value="IN">IN</option>
+							<option value="KS">KS</option>
+							<option value="KY">KY</option>
+							<option value="LA">LA</option>
+							<option value="MA">MA</option>
+							<option value="MD">MD</option>
+							<option value="ME">ME</option>
+							<option value="MI">MI</option>
+							<option value="MN">MN</option>
+							<option value="MO">MO</option>
+							<option value="MS">MS</option>
+							<option value="MT">MT</option>
+							<option value="NC">NC</option>
+							<option value="ND">ND</option>
+							<option value="NE">NE</option>
+							<option value="NH">NH</option>
+							<option value="NJ">NJ</option>
+							<option value="NM">NM</option>
+							<option value="NV">NV</option>
+							<option value="NY">NY(Best state)</option>
+							<option value="OH">OH</option>
+							<option value="OK">OK</option>
+							<option value="OR">OR</option>
+							<option value="PA">PA</option>
+							<option value="RI">RI</option>
+							<option value="SC">SC</option>
+							<option value="SD">SD</option>
+							<option value="TN">TN</option>
+							<option value="TX">TX</option>
+							<option value="UT">UT</option>
+							<option value="VA">VA</option>
+							<option value="VT">VT</option>
+							<option value="WA">WA</option>
+							<option value="WI">WI</option>
+							<option value="WV">WV</option>
+							<option value="WY">WY</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<input type="checkbox" onclick="copyBilling()" id="bCB" name="bCB" value="">
+			<label for="bCB">Billing Address is the Same as Above</label><br>
+
+			<h2>Billing Address</h2>
+			<table>
+				<tr>
+					<td><label for="bAddress">Billing Address:</label></td>
+					<td><input type="text" id="bAddress" name="bAddress"></td>
+				</tr>
+				<tr>
+					<td><label for="bCity">Billing City:</label></td>
+					<td><input type="text" id="bCity" name="bCity"></td>
+				</tr>
+				<tr>
+					<td><label for="bZip">Billing Zip:</label></td>
+					<td><input type="text" id="bZip" name="bZip"></td>
+				</tr>
+				<tr>
+					<td>
+						<select name="bState" id="bState">
+							<option value="AK">AK</option>
+							<option value="AL">AL</option>
+							<option value="AR">AR</option>
+							<option value="AZ">AZ</option>
+							<option value="CA">CA</option>
+							<option value="CO">CO</option>
+							<option value="CT">CT</option>
+							<option value="DC">DC</option>
+							<option value="DE">DE</option>
+							<option value="FL">FL</option>
+							<option value="GA">GA</option>
+							<option value="HI">HI</option>
+							<option value="IA">IA</option>
+							<option value="ID">ID</option>
+							<option value="IL">IL</option>
+							<option value="IN">IN</option>
+							<option value="KS">KS</option>
+							<option value="KY">KY</option>
+							<option value="LA">LA</option>
+							<option value="MA">MA</option>
+							<option value="MD">MD</option>
+							<option value="ME">ME</option>
+							<option value="MI">MI</option>
+							<option value="MN">MN</option>
+							<option value="MO">MO</option>
+							<option value="MS">MS</option>
+							<option value="MT">MT</option>
+							<option value="NC">NC</option>
+							<option value="ND">ND</option>
+							<option value="NE">NE</option>
+							<option value="NH">NH</option>
+							<option value="NJ">NJ</option>
+							<option value="NM">NM</option>
+							<option value="NV">NV</option>
+							<option value="NY">NY(Best state)</option>
+							<option value="OH">OH</option>
+							<option value="OK">OK</option>
+							<option value="OR">OR</option>
+							<option value="PA">PA</option>
+							<option value="RI">RI</option>
+							<option value="SC">SC</option>
+							<option value="SD">SD</option>
+							<option value="TN">TN</option>
+							<option value="TX">TX</option>
+							<option value="UT">UT</option>
+							<option value="VA">VA</option>
+							<option value="VT">VT</option>
+							<option value="WA">WA</option>
+							<option value="WI">WI</option>
+							<option value="WV">WV</option>
+							<option value="WY">WY</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<button onclick="orderSubmitted()">Submit</button>
+	</div>
+	<script src="order.js"></script>
+</body>
+
+</html>
