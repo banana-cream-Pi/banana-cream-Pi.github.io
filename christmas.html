@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Christmas Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+	background-color:green;
+	color:red;
+    }
+  </style>
+</head>
+<body>
+<h1>Time till christmas!!</h1>
+  <div id="countdown"></div>
+	
+  <script>function updateCountdown() {
+  const now = new Date();
+  const christmas = new Date(now.getFullYear(), 11, 25); // December is 11 (0-indexed month), day 25
+  if (now.getMonth() === 11 && now.getDate() > 25) {
+    christmas.setFullYear(christmas.getFullYear() + 1);
+  }
+
+  const timeLeft = christmas - now;
+
+  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  const milliseconds = Math.floor(timeLeft % 1000);
+
+  document.getElementById('countdown').innerHTML = `
+    ${hours.toString().padStart(2, '0')} :
+    ${minutes.toString().padStart(2, '0')} :
+    ${seconds.toString().padStart(2, '0')} :
+    ${milliseconds.toString().padStart(3, '0')}
+  `;
+}
+
+setInterval(updateCountdown, 1);
+</script>
+</body>
+</html>
