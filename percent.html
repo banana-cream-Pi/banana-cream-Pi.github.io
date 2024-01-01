@@ -31,12 +31,12 @@
      <script>
           setInterval(function timer() {
                var today = new Date();
-               var date_to_reply = new Date('2023-01-01 00:00:01');
+               var date_to_reply = new Date('2024-01-01 00:00:01');
                var totalms = 31536000000;
                var timeinmilisec = (date_to_reply.getTime() - today.getTime()) * (-1);
                var t = (timeinmilisec / 315360000).toFixed(6);
                console.log(t);
-               document.getElementById("text").innerText = `Percentage of 2023 passed: ${t}%`;
+               document.getElementById("text").innerText = `Percentage of 2024 passed: ${t}%`;
           }, 1000);
      </script>
 
@@ -45,7 +45,7 @@
 
 <body>
      <div id="percent">
-          <h2 id="text">Percentage of 2023 passed:</h2>
+          <h2 id="text">Percentage of 2024 passed:</h2>
      </div>
 </body>
 
