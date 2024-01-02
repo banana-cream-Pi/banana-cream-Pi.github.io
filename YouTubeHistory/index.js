@@ -12,7 +12,7 @@ let g = [
      "Monday",
      "Tuesday",
      "Wednesday",
-     "Thursay",
+     "Thursday",
      "Friday",
      "Saturday",
      "Sunday",
