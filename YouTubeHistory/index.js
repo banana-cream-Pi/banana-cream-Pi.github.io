@@ -14,7 +14,7 @@ let g = [
      "Wednesday",
      "Thursay",
      "Friday",
-     "Saterday",
+     "Saturday",
      "Sunday",
 ]; //week days
 let h = []; //number on weekday
