@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Gestation Timer</title>
+     <style>
+          body {
+               font-family: 'Courier New', Courier, monospace;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               margin: 0;
+               position: relative;
+          }
+
+          .container {
+               text-align: center;
+               width: 60%;
+          }
+
+          .counter {
+               font-size: 2em;
+               margin-bottom: 20px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               gap: 10px;
+          }
+
+          .counter div {
+               width: 120px;
+
+               text-align: center;
+          }
+
+          .unit {
+               font-size: 13px;
+          }
+
+          .controls {
+               position: absolute;
+               bottom: 10px;
+               right: 10px;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+          }
+
+          .slider {
+               writing-mode: bt-lr;
+               /* Rotate the slider to be vertical */
+               -webkit-appearance: slider-vertical;
+               width: 8px;
+               height: 200px;
+          }
+     </style>
+</head>
+
+<body>
+     <div class="container">
+          <h1>Pregnacy Survival Simulator</h1>
+          <h3>Use the slider to affect the rate time changes</h3>
+          <p id="survived">You've survived</p>
+          <div class="counter">
+               <div id="weeks">00 <div class="unit">weeks</div>
+               </div>
+               <div id="days">00 <div class="unit">days</div>
+               </div>
+               <div id="hours">00 <div class="unit">hours</div>
+               </div>
+               <div id="minutes">00 <div class="unit">minutes</div>
+               </div>
+               <div id="seconds">00 <div class="unit">seconds</div>
+               </div>
+               <div id="tenths">0.0</div>
+          </div>
+          <button onclick="startCounter()">Conception</button>
+          <div id="outcomeMessage" style="display: none;"></div>
+
+          <div class="controls">
+               <input type="range" min="0" max="100" value=" 0" class="slider" id="speedSlider">
+          </div>
+
+     </div>
+     <script>
+          let interval;
+          let startTime;
+          let elapsedRealTime = 0;
+          let totalElapsed = 0;
+          const BASE_SPEED = 100; // Interval in milliseconds for real-time
+          const MAX_SPEED_FACTOR = 28 * 24 * 60 * 60 * 1000 / 1000; // 2 weeks every 1 second
+
+          const weeksElement = document.getElementById('weeks');
+          const daysElement = document.getElementById('days');
+          const hoursElement = document.getElementById('hours');
+          const minutesElement = document.getElementById('minutes');
+          const secondsElement = document.getElementById('seconds');
+          const tenthsElement = document.getElementById('tenths');
+          const speedSlider = document.getElementById('speedSlider');
+          const outcomeMessage = document.getElementById('outcomeMessage');
+
+          let gestationEnded = false;
+
+          // Constants for gestation probabilities
+          const gestationProbabilities = [
+               { weeks: 28, percentage: 1 },
+               { weeks: 36, percentage: 2 },
+               { weeks: 37, percentage: 10 },
+               { weeks: 38, percentage: 12 },
+               { weeks: 39, percentage: 25 },
+               { weeks: 40, percentage: 50 }
+          ];
+          function randomIntFromInterval(min, max) { // min and max included 
+               return Math.floor(Math.random() * (max - min + 1) + min);
+          }
+
+          // Constants for abortion probabilities
+          const abortionProbabilities = [
+               { weeks: 6, days: randomIntFromInterval(1, 7), percentage: 44.8 },
+               { weeks: 9, days: randomIntFromInterval(1, 7), percentage: 36.0 },
+               { weeks: 13, days: randomIntFromInterval(1, 7), percentage: 12.7 },
+               { weeks: 15, days: randomIntFromInterval(1, 7), percentage: 2.7 },
+               { weeks: 17, days: randomIntFromInterval(1, 7), percentage: 1.5 },
+               { weeks: 20, days: randomIntFromInterval(1, 7), percentage: 1.5 },
+               { weeks: 21, days: randomIntFromInterval(1, 7), percentage: 0.9 }
+          ];
+
+          // Constants for miscarriage probabilities
+          const miscarriageProbabilities = [
+               { weeks: 6, days: 0, percentage: 80 },
+               { weeks: 10, days: 0, percentage: 5 },
+               { weeks: 19, days: 0, percentage: 1 }
+          ];
+          var end;
+          function startCounter() {
+               if (interval) clearInterval(interval);
+               startTime = new Date().getTime();
+               elapsedRealTime = 0;
+               totalElapsed = 0;
+               gestationEnded = false;
+               document.getElementById("survived").innerHTML = "You've survived";
+               outcomeMessage.style.display = 'none';
+               interval = setInterval(updateCounter, BASE_SPEED);
+               end = endSet();
+               console.log(end);
+          }
+          let abortedWeeks;
+          let birthWeeks;
+          let eventDays;
+          function endSet() {
+               eventDays = randomIntFromInterval(1, 6);
+               let chance = randomIntFromInterval(1, 100);
+               if (chance <= 68) {
+                    //birth
+                    let randomValue = Math.random() * 100;
+                    let cumulativePercentage = 0;
+                    for (let i = 0; i < gestationProbabilities.length; i++) {
+                         cumulativePercentage += gestationProbabilities[i].percentage;
+
+                         //   console.log(gestationProbabilities);
+                         if (randomValue <= cumulativePercentage) {
+                              birthWeeks = gestationProbabilities[i].weeks;
+
+                              break;
+                         }
+
+                    }
+                    if (!birthWeeks) {
+                         birthWeeks = 40;
+                    }
+                    return [0, birthWeeks, eventDays]
+               } if (chance > 68 && chance < 80) {
+                    //abortion
+                    let randomValue = Math.random() * 100;
+                    let cumulativePercentage = 0;
+
+                    for (let i = 0; i < abortionProbabilities.length; i++) {
+                         cumulativePercentage += abortionProbabilities[i].percentage;
+                         if (randomValue <= cumulativePercentage) {
+                              abortedWeeks = abortionProbabilities[i].weeks;
+
+                              break;
+                         }
+                    }
+                    // const weekNum = randomIntFromInterval(1, 15);
+                    return [1, abortedWeeks, eventDays]
+               } else {
+                    const weekNum = randomIntFromInterval(1, 12);
+                    return [2, weekNum, eventDays]
+               }
+          }
+          function updateCounter() {
+               const now = new Date().getTime();
+               const realElapsed = now - startTime;
+
+               const sliderValue = speedSlider.value / 100;
+               const speedFactor = Math.pow(sliderValue, 5) * MAX_SPEED_FACTOR; // Exponential sensitivity
+
+
+               elapsedRealTime += BASE_SPEED;
+               totalElapsed += BASE_SPEED * (1 + speedFactor);
+               startTime = now;
+
+               const adjustedTime = totalElapsed;
+
+               const weeks = Math.floor(adjustedTime / (7 * 24 * 60 * 60 * 1000));
+               const remainingAfterWeeks = adjustedTime % (7 * 24 * 60 * 60 * 1000);
+
+               const days = Math.floor(remainingAfterWeeks / (24 * 60 * 60 * 1000));
+               const remainingAfterDays = remainingAfterWeeks % (24 * 60 * 60 * 1000);
+
+               const hours = Math.floor(remainingAfterDays / (60 * 60 * 1000));
+               const remainingAfterHours = remainingAfterDays % (60 * 60 * 1000);
+
+               const minutes = Math.floor(remainingAfterHours / (60 * 1000));
+               const remainingAfterMinutes = remainingAfterHours % (60 * 1000);
+
+               const seconds = Math.floor(remainingAfterMinutes / 1000);
+               const milliseconds = remainingAfterMinutes % 1000;
+
+               const tenths = Math.floor(milliseconds / 100);
+               if (weeks == end[1] && days == end[2]) {
+
+                    clearInterval(interval);
+                    endGestation(weeks, days, end[0]);
+                    console.log("end1")
+
+               } if (weeks > end[1]) {
+                    clearInterval(interval);
+
+                    endGestation(weeks, days, end[0]);
+                    console.log("end2")
+               }
+               weeksElement.innerHTML = `${weeks.toString().padStart(2, '0')}<div class="unit">weeks</div>`;
+               daysElement.innerHTML = `${days.toString().padStart(2, '0')}<div class="unit">days</div>`;
+               hoursElement.innerHTML = `${hours.toString().padStart(2, '0')}<div class="unit">hours</div>`;
+               minutesElement.innerHTML = `${minutes.toString().padStart(2, '0')}<div class="unit">minutes</div>`;
+               secondsElement.innerHTML = `${seconds.toString().padStart(2, '0')}<div class="unit">seconds</div>`;
+               tenthsElement.innerHTML = `${tenths}.0`;
+
+
+               // Check if gestation should end due to abortion or miscarriage
+               /*    if (!gestationEnded && shouldEndGestation()) {
+                        gestationEnded = true;
+                        endGestation(weeks, days);
+                   } else if (!gestationEnded && weeks >= 45) {
+                        gestationEnded = true;
+                        endGestation(weeks, days, true);
+                   }*/
+          }
+
+          /*  function shouldEndGestation() {
+                 let randomValue = Math.random() * 100;
+  
+                 for (let i = 0; i < gestationProbabilities.length; i++) {
+                      if (randomValue <= gestationProbabilities[i].percentage) {
+                           return true;
+                      }
+                 }
+  
+                 return false;
+            }*/
+
+          function endGestation(weeks, days, type) {
+               if (type == 0) {
+                    let gender = Math.random() < 0.5 ? "boy" : "girl";
+                    displayOutcome(`You were born as a ${gender}, ${randomIntFromInterval(6, 10)} lbs ${randomIntFromInterval(1, 16)} oz`);
+               } else if (type == 1) {
+
+                    handleAbortion(weeks, days);
+               } else {
+                    // Miscarriage
+                    handleMiscarriage(weeks, days);
+               }
+          }
+
+          function handleAbortion(weeks, days) {
+               let randomValue = Math.random() * 100;
+               let cumulativePercentage = 0;
+
+               document.getElementById("survived").innerHTML = "You survived";
+               displayOutcome(`Aborted at ${weeks} weeks, ${days} days.`);
+
+          }
+
+          function handleMiscarriage(weeks, days) {
+               let randomValue = Math.random() * 100;
+               let cumulativePercentage = 0;
+
+               for (let i = 0; i < miscarriageProbabilities.length; i++) {
+                    cumulativePercentage += miscarriageProbabilities[i].percentage;
+                    if (randomValue <= cumulativePercentage) {
+                         let miscarriedWeeks = miscarriageProbabilities[i].weeks;
+                         let miscarriedDays = miscarriageProbabilities[i].days;
+
+                         break;
+                    }
+               }
+               document.getElementById("survived").innerHTML = "You survived";
+               displayOutcome(`Miscarried at ${weeks} weeks, ${days} days.`);
+          }
+
+          function displayOutcome(message) {
+
+               outcomeMessage.innerText = message;
+               outcomeMessage.style.display = 'block';
+          }
+     </script>
+</body>
+
+</html>
