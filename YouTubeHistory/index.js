@@ -1,4 +1,4 @@
-import data from "./watch-history.json" assert { type: "json" };
+import data from "./watch-history.json" with { type: "json" };
 let dates = {}; //list of dates videos were watched
 let timeDay = {}; //list of times videos were watched
 let channels = {}; //list of channels videos have been from
@@ -12,13 +12,12 @@ let g = [
      "Monday",
      "Tuesday",
      "Wednesday",
-     "Thursday",
+     "Thursay",
      "Friday",
      "Saturday",
      "Sunday",
 ]; //week days
 let h = []; //number on weekday
-
 let days = { a0: 0, a1: 0, a2: 0, a3: 0, a4: 0, a5: 0, a6: 0 };
 function isoDateWithoutTimeZone(date) {
      if (date == null) return date;
@@ -71,7 +70,6 @@ for (var vehicle in channels) {
           sortable.push([vehicle, channels[vehicle]]);
      }
 }
-
 sortable.sort(function (a, b) {
      return a[1] - b[1];
 });
@@ -93,12 +91,10 @@ for (var vehicle in timeDay) {
           ]);
      }
 }
-
 sortable2.sort(function (a, b) {
      return a[0] - b[0];
 });
 //---------------
-
 for (const i in sortable2) {
      if (sortable2[i]) {
           //formats into correct time format
@@ -124,14 +120,12 @@ for (const i in sortable2) {
           f.push(sortable2[i][1]); //watched per time
      }
 }
-
 for (const i in sortable) {
      if (sortable[i][1] > 10) {
           c.unshift(sortable[i][0]); //channels
           d.unshift(sortable[i][1]); //watched per channel
      }
 }
-
 new Chart("myTime", {
      type: "bar",
      data: {
