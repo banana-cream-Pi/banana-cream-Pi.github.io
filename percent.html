@@ -31,12 +31,12 @@
      <script>
           setInterval(function timer() {
                var today = new Date();
-               var date_to_reply = new Date('2024-01-01 00:00:01');
+               var date_to_reply = new Date('2025-01-01 00:00:01');
                var totalms = 31536000000;
                var timeinmilisec = (date_to_reply.getTime() - today.getTime()) * (-1);
                var t = (timeinmilisec / 315360000).toFixed(6);
                console.log(t);
-               document.getElementById("text").innerText = `Percentage of 2024 passed: ${t}%`;
+               document.getElementById("text").innerText = `Percentage of 2025 passed: ${t}%`;
           }, 1000);
      </script>
 
