@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Quixote Custom Reading Tracker</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-main: #1a202c;
+            --text-muted: #718096;
+            --unread-color: #dc2626;
+            --read-color: #16a34a;
+            --accent-blue: #2563eb;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tracker-card {
+            max-width: 680px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .meta-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .sticky-dashboard {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            padding: 10px 0 20px 0;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 25px;
+            z-index: 100;
+        }
+
+        .progress-track {
+            background: #edf2f7;
+            border-radius: 9999px;
+            height: 24px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .progress-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 3px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .action-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 12px;
+        }
+
+        .btn-reset {
+            background: transparent;
+            border: 1px solid var(--unread-color);
+            color: var(--unread-color);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .btn-reset:hover {
+            background: var(--unread-color);
+            color: #ffffff;
+        }
+
+        .assignment-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .assignment-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: #f8fafc;
+            transition: all 0.25s ease;
+        }
+
+        .assignment-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-right: 20px;
+        }
+
+        .assignment-date {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .assignment-pages {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--unread-color);
+            transition: color 0.25s ease;
+        }
+
+        .assignment-row.complete-state .assignment-pages {
+            color: var(--read-color);
+            text-decoration: line-through;
+        }
+
+        .assignment-summary {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .btn-toggle-status {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .btn-toggle-status:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .assignment-row.complete-state {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .assignment-row.complete-state .btn-toggle-status {
+            background: var(--read-color);
+            border-color: var(--read-color);
+            color: #ffffff;
+            box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tracker-card">
+        <h1>Don Quixote Reading Tracker</h1>
+        <h2>Seminar is approaching</h2>
+        <p>Good luck</p>
+        <div class="meta-subtitle">982 Pages Total</div>
+
+        <div class="sticky-dashboard">
+            <div class="progress-track">
+                <div class="progress-fill" id="statusBar"></div>
+                <div class="progress-label" id="statusLabel">0% Complete</div>
+            </div>
+            <div class="action-bar">
+                <button class="btn-reset" onclick="clearAllProgress()">Reset Tracker</button>
+            </div>
+        </div>
+
+        <div class="assignment-stream" id="assignmentContainer"></div>
+    </div>
+
+
+    <script>
+        const readingPlanData = [
+            { uid: 1, date: "August 05 (Wednesday)", target: "Pages 1–48" },
+            { uid: 2, date: "August 06 (Thursday)", target: "Pages 49–96" },
+            { uid: 3, date: "August 07 (Friday)", target: "Pages 97–144" },
+            { uid: 4, date: "August 08 (Saturday)", target: "Pages 145–246" },
+            { uid: 5, date: "August 09 (Sunday)", target: "Pages 247–347" },
+            { uid: 6, date: "August 10 (Monday)", target: "Pages 348–395" },
+            { uid: 7, date: "August 11 (Tuesday)", target: "Pages 396–443" },
+            { uid: 8, date: "August 12 (Wednesday)", target: "Pages 444–491" },
+            { uid: 9, date: "August 13 (Thursday)", target: "Pages 492–539" },
+            { uid: 10, date: "August 14 (Friday)", target: "Pages 540–587" },
+            { uid: 11, date: "August 15 (Saturday)", target: "Pages 588–689" },
+            { uid: 12, date: "August 16 (Sunday)", target: "Pages 690–790" },
+            { uid: 13, date: "August 17 (Monday)", target: "Pages 791–838" },
+            { uid: 14, date: "August 18 (Tuesday)", target: "Pages 839–886" },
+            { uid: 15, date: "August 19 (Wednesday)", target: "Pages 887–934" },
+            { uid: 16, date: "August 20 (Thursday)", target: "Pages 935–982" }
+        ];
+
+        const STORAGE_KEY = "don_quixote_tracker_v2";
+
+        function fetchLoggedProgress() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        let completedRegistry = fetchLoggedProgress();
+
+        function renderAssignmentList() {
+            const domContainer = document.getElementById('assignmentContainer');
+            domContainer.innerHTML = '';
+
+            readingPlanData.forEach(item => {
+                const isDone = completedRegistry.includes(item.uid);
+
+                const elementRow = document.createElement('div');
+                elementRow.className = `assignment-row ${isDone ? 'complete-state' : ''}`;
+                elementRow.id = `assignment-id-${item.uid}`;
+
+                elementRow.innerHTML = `
+                <div class="assignment-details">
+                    <div class="assignment-date">${item.date}</div>
+                    <div class="assignment-pages">${item.target}</div>
+                
+                </div>
+                <button class="btn-toggle-status" onclick="modifyStatus(${item.uid})">
+                    ${isDone ? '✓ Completed' : 'Mark Completed'}
+                </button>
+            `;
+                domContainer.appendChild(elementRow);
+            });
+
+            recalculateMetrics();
+        }
+
+        function modifyStatus(uid) { if (completedRegistry.includes(uid)) { completedRegistry = completedRegistry.filter(id => id !== uid); } else { completedRegistry.push(uid); } localStorage.setItem(STORAGE_KEY, JSON.stringify(completedRegistry)); renderAssignmentList(); } function recalculateMetrics() {
+            const totalItems = readingPlanData.length; const loggedCount = completedRegistry.length; const ratioPercentage = Math.round((loggedCount / totalItems) * 100); document.getElementById('statusBar').style.width = ratioPercentage + '%';
+            document.getElementById('statusLabel').innerText = ` ${ratioPercentage}% Completed (${loggedCount}/${totalItems} Assignments)`;
+        }
+        function clearAllProgress() { if (confirm("Are you sure you want to clear your entire reading log?")) { completedRegistry = []; localStorage.setItem(STORAGE_KEY, JSON.stringify(completedRegistry)); renderAssignmentList(); } }// Run execution loop on layout
+
+        renderAssignmentList();
+
+
+    </script>
+</body>
+
+</html>
